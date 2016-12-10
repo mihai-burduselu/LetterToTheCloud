@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Project"
+             x:Class="XamathonProject.MainPage">
+    <ContentPage.Content>
+      <AbsoluteLayout>
+        <Label  Text="Write your letter here"
+                FontSize="30"
+                AbsoluteLayout.LayoutBounds="400,0,300,200"
+                LineBreakMode="WordWrap"  />
+        <Button x:Name ="sendLetter"
+                Text="Click here to send letter"
+                FontSize="30"
+                AbsoluteLayout.LayoutBounds=".5,1,.5,.1"
+                AbsoluteLayout.LayoutFlags="All"
+                Clicked="SendLetter"/>
+        <Editor x:Name ="writeLetter"
+                AbsoluteLayout.LayoutBounds="1,.25,500,200"
+                AbsoluteLayout.LayoutFlags="PositionProportional" />
+      <Entry x:Name ="nameEntry"
+             HorizontalTextAlignment="End"
+            AbsoluteLayout.LayoutBounds="950,400,400,50"/>
+      </AbsoluteLayout>
+  </ContentPage.Content>
+</ContentPage>
