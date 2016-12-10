@@ -6,8 +6,8 @@
     <Label  x:Name = "wish"
             Text="Merry Christmas! Your letter has been received with hapinness!"
             FontSize="30"
-            HorizontalTextAlignment="Center"
-            VerticalTextAlignment="Center" />
+            AbsoluteLayout.LayoutBounds="0.1,.5,.5,.5"
+            AbsoluteLayout.LayoutFlags="All" />
     <Button x:Name ="playMusic"
             Text="Play Music"
             FontSize="30"
