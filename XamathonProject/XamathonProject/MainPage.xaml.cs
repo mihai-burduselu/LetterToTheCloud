@@ -18,10 +18,15 @@ namespace XamathonProject
             String letter = writeLetter.Text;
             String name = nameEntry.Text;
 
-            ApiCommunication.MakeRequests(letter,name);
+            ApiCommunication.MakeRequests(letter, name);
+            NavigationPage page;
 
-            NavigationPage page = new NavigationPage(new SendLetter());
-            Navigation.PushAsync(page); 
+            if (letter.Contains("I am Santa Claus"))
+                page = new NavigationPage(new LogIn());
+            else
+                page = new NavigationPage(new SendLetter());
+
+            Navigation.PushAsync(page);
         }
     }
 }

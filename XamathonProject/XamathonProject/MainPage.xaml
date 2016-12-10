@@ -5,22 +5,38 @@
              x:Class="XamathonProject.MainPage">
     <ContentPage.Content>
       <AbsoluteLayout>
-        <Label  Text="Write your letter here"
+        <Label  Text="Dear Santa,"
                 FontSize="30"
-                AbsoluteLayout.LayoutBounds="400,0,300,200"
-                LineBreakMode="WordWrap"  />
-        <Button x:Name ="sendLetter"
-                Text="Click here to send letter"
+                AbsoluteLayout.LayoutBounds="500,0,300,200"
+                LineBreakMode="WordWrap" 
+                FontAttributes="Italic"/>
+        <Label  Text="My name is "
                 FontSize="30"
-                AbsoluteLayout.LayoutBounds=".5,1,.5,.1"
-                AbsoluteLayout.LayoutFlags="All"
-                Clicked="SendLetter"/>
+                AbsoluteLayout.LayoutBounds="500,75,300,50"
+                LineBreakMode="WordWrap"
+                FontAttributes="Italic"/>
+        <Entry x:Name ="nameEntry"
+               HorizontalTextAlignment="End"
+               FontSize="25"
+               AbsoluteLayout.LayoutBounds="700,75,300,50"
+               FontAttributes="Italic"/>
+        <Label  Text="And this is what I wish for"
+                FontSize="30"
+                AbsoluteLayout.LayoutBounds="500,125,500,200"
+                LineBreakMode="WordWrap"
+                FontAttributes="Italic"/>
         <Editor x:Name ="writeLetter"
-                AbsoluteLayout.LayoutBounds="1,.25,500,200"
-                AbsoluteLayout.LayoutFlags="PositionProportional" />
-      <Entry x:Name ="nameEntry"
-             HorizontalTextAlignment="End"
-            AbsoluteLayout.LayoutBounds="950,400,400,50"/>
+                AbsoluteLayout.LayoutBounds="0.58,.35,500,200"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                FontSize="25"
+                FontAttributes="Italic"/>
+        <Button x:Name ="sendLetter"
+                Text="Thank you, Santa! I will click here to send my letter!"
+                FontSize="30"
+                AbsoluteLayout.LayoutBounds=".58,1,.5,.1"
+                AbsoluteLayout.LayoutFlags="All"
+                Clicked="SendLetter"
+                FontAttributes="Italic"/>
       </AbsoluteLayout>
   </ContentPage.Content>
 </ContentPage>

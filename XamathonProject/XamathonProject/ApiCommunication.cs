@@ -1,10 +1,14 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace XamathonProject
 {
@@ -12,7 +16,7 @@ namespace XamathonProject
     {
 
         private const string BaseUrl = "https://westus.api.cognitive.microsoft.com/";
-        private const string AccountKey = "Your account key";
+        private const string AccountKey = "Your api key";
 
         private const int NumLanguages = 1;
         private static string response;
@@ -34,15 +38,15 @@ namespace XamathonProject
 
                 letter = letter.Replace('\n', ' ');
 
-                string[] wishes = letter.Split(',');
+                string[] wishes = letter.Split('\r');
                 jsonVersion = "{\"documents\":[";
 
                 for (int i = 0; i < wishes.Length; i++)
-                    if(!wishes[i].Equals(" "))
-                {
-                    jsonVersion = jsonVersion + "{\"id\":\"" + i + "\",\"text\":\""
-                                              + wishes[i] + "\"},";
-                }
+                    if (!wishes[i].Equals(" "))
+                    {
+                        jsonVersion = jsonVersion + "{\"id\":\"" + i + "\",\"text\":\""
+                                                  + wishes[i] + "\"},";
+                    }
 
                 jsonVersion = jsonVersion + "]}";
 
@@ -52,19 +56,25 @@ namespace XamathonProject
 
                 components = JObject.Parse(response);
                 test = components["documents"];
-                char[] toRemove = { ' ', '[', ']','\r','\n','\\','"','\'' };
+                char[] toRemove = { ' ', '[', ']', '\r', '\n', '\\', '"', '\'' };
 
-                foreach(var testComponent in test)
+                foreach (var testComponent in test)
                 {
-                     helper = testComponent["keyPhrases"];
+                    helper = testComponent["keyPhrases"];
 
-                    if(helper != null)
+                    if (helper != null)
                     {
                         helperConvertedToString = helper.ToString().Trim(toRemove);
-                        wishesToSend.Push(helperConvertedToString);
+                        wishesToSend.Push(helperConvertedToString.Replace(" ", "%20"));
                     }
                 }
+                EmailService.SendEmail(name, wishesToSend);
             }
+        }
+
+        public static void SendLogInData(String name, String email, String association)
+        {
+            EmailService.SetDirectorEmail(email);
         }
 
         static async Task<String> CallEndpoint(HttpClient client, string uri, byte[] byteData)

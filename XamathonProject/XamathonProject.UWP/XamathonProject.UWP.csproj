@@ -112,6 +112,7 @@
   <ItemGroup>
     <Content Include="background.jpg" />
     <Content Include="christmas_texture2632.jpg" />
+    <Content Include="login.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

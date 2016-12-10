@@ -10,6 +10,7 @@ namespace XamathonProject
     public class EmailService
     {
         private const string MarketUrl = "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=";
+        private static string ToEmailAddress = "santa@wishes.com";
         private static string GetEmailContent(string childName, Stack<string> wishes)
         {
             string result = "Hello! <br>" + childName + " has some wishes for Christmas and you can check some offerts bellow.<br>";
@@ -30,7 +31,7 @@ namespace XamathonProject
                 string emailContent = GetEmailContent(childName, wishes);
                 var values = new Dictionary<string, string>
                 {
-                   { "ToEmailAddress", "director@wishes.com" },
+                   { "ToEmailAddress", ToEmailAddress },
                    { "FromEmailAddress", "child@wishes.com" },
                    { "Content", emailContent},
                    {"Subject", "Wishes list" }
@@ -39,6 +40,10 @@ namespace XamathonProject
                 var response = await client.PostAsync("http://emailwebapixamathon.azurewebsites.net/api/email/SendEmail", content);
                 var responseString = await response.Content.ReadAsStringAsync();
             }
+        }
+        public static void SetDirectorEmail(string email)
+        {
+            ToEmailAddress = email;
         }
     }
 }

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamathonProject.LogIn">
+  <ContentPage.Content>
+    <AbsoluteLayout x:Name = "layout">
+      <Label Text ="Name"
+             AbsoluteLayout.LayoutBounds="900,400,200,40"
+             TextColor="White"/>
+      <Entry x:Name ="Name"
+             AbsoluteLayout.LayoutBounds="1000,400,200,40"/>
+      <Label Text ="Email"
+             AbsoluteLayout.LayoutBounds="900,450,200,40"
+             TextColor="White"/>
+      <Entry  x:Name ="Email"
+              AbsoluteLayout.LayoutBounds="1000,450,200,40"/>
+      <Label Text ="Association"
+             AbsoluteLayout.LayoutBounds="900,500,200,40"
+             TextColor="White"/>
+      <Entry x:Name ="Association"
+             AbsoluteLayout.LayoutBounds="1000,500,200,40"/>
+      <Button     x:Name ="send"
+                  Text="Send this and become Santa!"
+                  FontSize="30"
+                  AbsoluteLayout.LayoutBounds=".58,1,.5,.1"
+                  AbsoluteLayout.LayoutFlags="All"
+                  FontAttributes="Italic"
+                  TextColor="White"
+                  Clicked="SendLetter"/>
+    </AbsoluteLayout>
+  </ContentPage.Content>
+</ContentPage>
